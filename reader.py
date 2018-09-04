@@ -35,7 +35,7 @@ for data in glob.glob(data_folder):
 #....
 
 # calculate the doppler shift
-target['doppler'] = (target['frequency power [Hz]'] - 1.421402)/1.421402
+#target['doppler'] = (target['frequency power [Hz]'] - 1.421402)/1.421402
 
 # write-out to tab-delimited csv
 target.to_csv('..//21cm//21cmout.csv', sep='\t')
@@ -43,5 +43,5 @@ target.to_csv('..//21cm//21cmout.csv', sep='\t')
 #print some stats during dev
 #print(target.shape)
 #print(target.columns)
-print(target.head())
-print(target.tail())
+#print(target.head())
+#print(target.tail())
