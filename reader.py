@@ -37,8 +37,16 @@ for data in glob.glob(data_folder):
 # calculate the doppler shift, don't know how yet exactly
 #target['doppler'] = (target['frequency power [Hz]'] - 1.421402)/1.421402
 
+# add the gaussian fit column
+
+
 # write-out to tab-delimited csv
-target.to_csv('..//21cm//21cmout.csv', sep='\t')
+target.to_csv('..//21cm//output//21cmout.csv', sep='\t')
+
+# print test plot for longitude 016
+target.loc[' 016'].plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
+plt.show()
+# plt.savefig('..//21cm//output//' + target.iloc[0] + '.png')
 
 # -------DEV STUFF-------
 #print some stats during dev
@@ -51,5 +59,3 @@ target.to_csv('..//21cm//21cmout.csv', sep='\t')
 #print(target.iloc[0:10, :])
 #print(target.loc[' 016'])
 
-target.loc[' 016'].plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
-plt.show()
