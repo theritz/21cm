@@ -27,34 +27,28 @@ for data in glob.glob(data_folder):
     temp['longitude'] = lon
 # set MultiIndex on longitude and frequency columns
     temp = temp.set_index(['longitude'])
+# write-out every spectrum in png format
+# still to add: substract baseline, gaussian fit
+    temp.plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
+    plt.savefig('..//21cm//output//' + lon + '.png')
+#append df temp to df target
     target = target.append(temp)
 # sorting on entire index, not sure what this does for frequency so check
     target = target.sort_index()
 
-# determine which measurements are significant for further processing
-#....
-
 # calculate the doppler shift, don't know how yet exactly
 #target['doppler'] = (target['frequency power [Hz]'] - 1.421402)/1.421402
 
-# add the gaussian fit column
-
-
 # write-out to tab-delimited csv
 target.to_csv('..//21cm//output//21cmout.csv', sep='\t')
-
-# print test plot for longitude 016
-target.loc[' 016'].plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
-plt.show()
-# plt.savefig('..//21cm//output//' + target.iloc[0] + '.png')
 
 # -------DEV STUFF-------
 #print some stats during dev
 #print(target.shape)
 #print(target.info)
 #print(target.columns)
-#print(target.head())
-#print(target.tail())
+print(target.head())
+print(target.tail())
 #df.loc[row_indexer,column_indexer]
 #print(target.iloc[0:10, :])
 #print(target.loc[' 016'])
