@@ -31,6 +31,7 @@ for data in glob.glob(data_folder):
 # still to add: substract baseline, gaussian fit
     temp.plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
     plt.savefig('..//21cm//output//' + lon + '.png')
+    plt.close()
 #append df temp to df target
     target = target.append(temp)
 # sorting on entire index, not sure what this does for frequency so check
