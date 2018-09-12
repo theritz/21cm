@@ -20,8 +20,10 @@ for data in glob.glob(data_folder):
     temp.columns=['frequency power [Hz]','spectral density [dB/Hz]']
 # add the longitude column in a not-so-nice way
     temp['longitude'] = lon
-# substract baseline
+# substract baseline using polynomial fit
 # ...
+# calculate velocity of source (but this is WRONG right now!)
+    temp['velocity'] = 299792458*((temp['frequency power [Hz]'] - 1420.45)/1420.45)
 # write-out spectrum in png format, disabled by default
 #    temp.plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
 #    plt.savefig('..//21cm//output//' + lon + '.png')
@@ -31,12 +33,12 @@ for data in glob.glob(data_folder):
 # sorting the totals dataframe on index (but do I need to, really?)
 target = target.set_index(['longitude'])
 # set MultiIndex on longitude and frequency columns
-target = target.sort_index()
+#target = target.sort_index()
 # write-out totals dataframe to tab-delimited csv
-target.to_csv('..//21cm//output//21cmout.csv', sep='\t')
+#target.to_csv('..//21cm//output//21cmout.csv', sep='\t')
+
 
 # -------DEV STUFF-------
-#print some stats during dev
 print(target.shape)
 #print(target)
 #print(target.info)
@@ -45,5 +47,8 @@ print(target.shape)
 #print(target.tail())
 #df.loc[row_indexer,column_indexer]
 #print(target.iloc[0:10, :])
-#print(target.loc['016'])
+print(target.loc['016'])
+target.loc['016'].plot(x='frequency power [Hz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
+target.loc['016'].plot(x='frequency power [Hz]', y='velocity', kind='scatter', s=2)
+plt.show()
 
