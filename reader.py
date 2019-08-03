@@ -51,7 +51,7 @@ mw.to_csv('//Users//maurits//Documents//VCS_projects//21cm//output//21cmout.csv'
 #print(target.shape)
 print(mw.shape)
 print(mw.head())
-#print(target.info)
+print(target.info)
 #print(target.columns)
 #print(target.head())
 #print(target.tail())
