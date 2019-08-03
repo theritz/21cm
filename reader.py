@@ -10,9 +10,11 @@ from scipy.stats import norm
 mw = []
 temp = []
 target = pd.DataFrame()
-data_folder = '..//21cm//data//*'
+data_folder = '//Users//maurits//Documents//VCS_projects//21cm//data//*'
+
 # rip the galactic longitude from the 2nd line to use it later on
 for data in glob.glob(data_folder):
+    print(data)
     with open(data) as file:
         line = file.readlines()[1]
         lon = line[-4:-1]
@@ -30,7 +32,7 @@ for data in glob.glob(data_folder):
     plt.xlabel('frequency power [Mhz]')
     plt.ylabel('spectral density [dB/Hz]')
     temp.plot(x='frequency power [Mhz]', y='spectral density [dB/Hz]', kind='scatter', s=2)
-    plt.savefig('..//21cm//output//' + lon + '.png')
+    plt.savefig('//Users//maurits//Documents//VCS_projects//21cm//output//' + lon + '.png')
     plt.close()
 #append df temp to totals df target
     target = target.append(temp)
@@ -43,7 +45,7 @@ mw['doppler'] = ((mw['frequency power [Mhz]'] - 1420.41)/1420.41*299729.46)
 # sort df mw for cosmetic purposes
 mw = mw.sort_index()
 # write-out totals dataframe to tab-delimited csv
-mw.to_csv('..//21cm//output//21cmout.csv', sep='\t')
+mw.to_csv('//Users//maurits//Documents//VCS_projects//21cm//output//21cmout.csv', sep='\t')
 
 # -------DEV STUFF-------
 #print(target.shape)
