@@ -2,8 +2,8 @@
 import numpy as np
 import pandas as pd
 import glob
-import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
+from matplotlib import pyplot as plt
+from matplotlib import mlab as mlab
 from scipy.stats import norm
 
 # set some global variables and lists etc.
@@ -49,8 +49,8 @@ mw.to_csv('//Users//maurits//Documents//VCS_projects//21cm//output//21cmout.csv'
 
 # -------DEV STUFF-------
 #print(target.shape)
-print(mw.shape)
-print(mw.head())
+#print(mw.shape)
+#print(mw.head())
 print(target.info)
 #print(target.columns)
 #print(target.head())
