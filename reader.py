@@ -41,7 +41,7 @@ target = target.set_index(['longitude'])
 # get max values per longitude from df target and put in df mw
 mw = pd.DataFrame(target.max(level=0))
 # calculate doppler shift from df mw
-mw['doppler'] = ((mw['frequency power [Mhz]'] - 1420.41)/1420.41*299729.46)
+mw['doppler'] = ((mw['frequency power [Mhz]'] - 1420.405751)/1420.41*299729.46)
 # sort df mw for cosmetic purposes
 mw = mw.sort_index()
 # write-out totals dataframe to tab-delimited csv
