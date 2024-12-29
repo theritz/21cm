@@ -1,0 +1,15 @@
+   gaussian fit beginnetje:
+
+(mu,sigma) = norm.fit(temp['spectral density [dB/Hz]'])
+n,bins,patches=plt.hist(temp['spectral density [dB/Hz]'],20,normed=1,facecolor='green',align='mid')
+y = pd.DataFrame(mlab.normpdf(bins,mu,sigma))
+print(y)
+
+(mu,sigma) = norm.fit(temp['spectral density [dB/Hz]'])
+n,bins,patches=plt.hist(temp['spectral density [dB/Hz]'],20,normed=1,facecolor='green',align='mid')
+y = mlab.normpdf(bins,mu,sigma)
+plt.plot(bins,y,'r--',linewidth=2)
+plt.show()
+
+
+
